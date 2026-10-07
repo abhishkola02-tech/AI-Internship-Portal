@@ -1,0 +1,534 @@
+/* css/upload.css */
+/* Stylesheet for Resume Uploader */
+
+:root {
+    --bg-dark: #0f0f10;
+    --card-bg: #18181b;
+    --card-border: #27272a;
+    --text-primary: #f4f4f5;
+    --text-secondary: #a1a1aa;
+    --primary-color: #a855f7;
+    --primary-gradient: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+    --accent-glow: rgba(168, 85, 247, 0.15);
+    --font-sans: 'Inter', sans-serif;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+}
+
+.upload-header {
+    margin-bottom: 30px;
+}
+
+.upload-header h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header-subtitle {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+/* Grid Layout */
+.upload-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: start;
+    animation: fadeIn 0.4s ease;
+}
+
+.upload-card, 
+.status-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.upload-card h3,
+.status-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.card-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+/* Drag Area Drop-zone */
+.drop-zone {
+    border: 2px dashed #3f3f46;
+    background-color: #0c0c0e;
+    border-radius: 12px;
+    padding: 50px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drop-zone:hover,
+.drop-zone.dragover {
+    border-color: var(--primary-color);
+    background-color: rgba(168, 85, 247, 0.03);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.05);
+}
+
+.drop-zone-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.drop-icon {
+    font-size: 44px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.drop-zone:hover .drop-icon {
+    transform: translateY(-4px);
+    color: var(--primary-color);
+}
+
+.drop-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.drop-subtext {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.browse-link {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.file-limits {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 14px;
+}
+
+/* Progress bar section */
+.progress-section {
+    background-color: #121214;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 20px;
+    animation: slideDown 0.3s ease;
+}
+
+.progress-section.hidden {
+    display: none !important;
+}
+
+.file-details {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.file-icon {
+    font-size: 20px;
+    color: var(--primary-color);
+    background-color: rgba(168, 85, 247, 0.1);
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+}
+
+.file-name {
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.file-size {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.progress-percentage {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background-color: #27272a;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--primary-gradient);
+    border-radius: 3px;
+    transition: width 0.15s ease;
+}
+
+/* Status Panel styling */
+.status-box-content {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.loading-state, 
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.empty-state-icon {
+    font-size: 32px;
+    color: #27272a;
+}
+
+.active-resume-badge {
+    background-color: #0c0c0e;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.resume-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    overflow: hidden;
+}
+
+.resume-meta-icon {
+    font-size: 24px;
+    color: var(--success-color);
+}
+
+.resume-meta-details {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.resume-meta-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.resume-meta-date {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.resume-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-action {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    transition: all 0.2s ease;
+}
+
+.btn-action.download {
+    background-color: #27272a;
+    border: 1px solid #3f3f46;
+    color: var(--text-primary);
+}
+
+.btn-action.download:hover {
+    background-color: #3f3f46;
+}
+
+.btn-action.delete {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: var(--error-color);
+}
+
+.btn-action.delete:hover {
+    background-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Alert styling */
+.alert-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    animation: fadeIn 0.3s ease;
+    line-height: 1.4;
+}
+
+.alert-box.hidden {
+    display: none !important;
+}
+
+.alert-box.success {
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    color: var(--success-color);
+}
+
+.alert-box.error {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: var(--error-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideDown {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* AI Analysis Component Styles */
+.ai-analysis-container h4 {
+    font-size: 18px;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ai-analysis-container h4 i {
+    color: var(--primary-color);
+}
+
+.scores-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.score-circle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.score-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: conic-gradient(var(--primary-color) 0%, #2A2F3A 0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background 1s ease-out;
+}
+
+.score-circle::before {
+    content: '';
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    background-color: var(--bg-card);
+    border-radius: 50%;
+}
+
+.score-circle span {
+    position: relative;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.analysis-section {
+    margin-bottom: 25px;
+}
+
+.analysis-section h5 {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.analysis-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.skills-chips-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-chip {
+    padding: 6px 12px;
+    background: rgba(108, 92, 231, 0.1);
+    color: var(--primary-color);
+    border: 1px solid rgba(108, 92, 231, 0.2);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.role-chip {
+    padding: 6px 12px;
+    background: rgba(0, 184, 148, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(0, 184, 148, 0.2);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.analysis-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.analysis-list li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.analysis-list li i {
+    margin-top: 3px;
+    font-size: 12px;
+}
+
+.roadmap-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--border-color);
+}
+
+.roadmap-timeline li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 20px;
+}
+
+.roadmap-timeline li:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: 3px solid var(--bg-card);
+}
+
+.roadmap-timeline li strong {
+    display: block;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.roadmap-timeline li p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+    .upload-grid {
+        grid-template-columns: 1fr;
+    }
+}

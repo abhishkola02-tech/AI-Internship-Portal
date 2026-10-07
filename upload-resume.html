@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortalAI - Upload Resume</title>
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/upload.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- Sidebar Injection -->
+        <div id="sidebar-container"></div>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            <!-- Header Title -->
+            <header class="upload-header">
+                <div>
+                    <h1>Upload Resume</h1>
+                    <p class="header-subtitle">Provide your resume to extract skills and compute matching recommendations.</p>
+                </div>
+            </header>
+
+            <!-- Alerts Box banner -->
+            <div id="alert-box" class="alert-box hidden">
+                <i class="alert-icon fa-solid"></i>
+                <span id="alert-message"></span>
+            </div>
+
+            <!-- Upload Dashboard Grid -->
+            <div class="upload-grid">
+                
+                <!-- Card 1: Upload Action Area -->
+                <section class="upload-card">
+                    <h3>Select Document</h3>
+                    <p class="card-desc">Drag and drop your file or choose one manually from your filesystem.</p>
+
+                    <!-- Interactive Drag Area -->
+                    <div class="drop-zone" id="drop-zone">
+                        <div class="drop-zone-content">
+                            <i class="fa-solid fa-cloud-arrow-up drop-icon"></i>
+                            <p class="drop-text">Drag & drop your resume file here</p>
+                            <span class="drop-subtext">or <span class="browse-link">browse files</span></span>
+                            <span class="file-limits">Supports PDF and DOCX files (Max 5MB)</span>
+                        </div>
+                        <input type="file" id="resume-file-input" accept=".pdf,.docx" style="display: none;">
+                    </div>
+
+                    <!-- Progress Bar Overlay (Hidden by default) -->
+                    <div class="progress-section hidden" id="progress-section">
+                        <div class="file-details">
+                            <div class="file-icon">
+                                <i class="fa-solid fa-file-lines"></i>
+                            </div>
+                            <div class="file-text">
+                                <span class="file-name" id="uploading-file-name">resume_final.pdf</span>
+                                <span class="file-size" id="uploading-file-size">1.2 MB</span>
+                            </div>
+                            <span class="progress-percentage" id="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="progress-bar-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Card 2: Current Status Info & GPT Analysis Results -->
+                <aside class="status-card" id="analysis-results-card" style="grid-column: span 1;">
+                    <h3>Current Resume Status</h3>
+                    <p class="card-desc">Review your current active resume and AI-extracted insights.</p>
+                    
+                    <div id="resume-status-container" class="status-box-content">
+                        <!-- Loaded state will go here dynamically -->
+                        <div class="loading-state">
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+                            <span>Fetching profile information...</span>
+                        </div>
+                    </div>
+
+                    <!-- AI Analysis Content (Hidden initially) -->
+                    <div id="ai-analysis-container" class="ai-analysis-container hidden">
+                        <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border-color);">
+                        
+                        <h4><i class="fa-solid fa-brain"></i> AI Resume Analysis</h4>
+                        
+                        <div class="scores-row">
+                            <div class="score-circle-container">
+                                <div class="score-circle" id="profile-score-circle">
+                                    <span id="profile-score-val">0</span>
+                                </div>
+                                <span>Profile Score</span>
+                            </div>
+                            <div class="score-circle-container">
+                                <div class="score-circle" id="ats-score-circle">
+                                    <span id="ats-score-val">0</span>
+                                </div>
+                                <span>ATS Score</span>
+                            </div>
+                        </div>
+
+                        <div class="analysis-section">
+                            <h5>Summary</h5>
+                            <p id="analysis-summary" class="analysis-text">--</p>
+                        </div>
+
+                        <div class="analysis-section">
+                            <h5>Extracted Technical Skills</h5>
+                            <div class="skills-chips-wrapper" id="analysis-skills"></div>
+                        </div>
+
+                        <div class="analysis-section">
+                            <h5>Recommended Roles</h5>
+                            <div class="skills-chips-wrapper" id="analysis-roles"></div>
+                        </div>
+
+                        <div class="analysis-section">
+                            <h5>Strengths</h5>
+                            <ul id="analysis-strengths" class="analysis-list"></ul>
+                        </div>
+
+                        <div class="analysis-section">
+                            <h5>Weaknesses</h5>
+                            <ul id="analysis-weaknesses" class="analysis-list"></ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Extended Roadmap & Recommendations (Full Width, Hidden Initially) -->
+            <div id="extended-analysis-container" class="extended-analysis-container hidden">
+                <div class="upload-grid" style="grid-template-columns: 1fr 1fr; margin-top: 30px;">
+                    
+                    <section class="upload-card">
+                        <h3><i class="fa-solid fa-map-location-dot"></i> Learning Roadmap</h3>
+                        <p class="card-desc">Personalized steps to improve your skills for your target roles.</p>
+                        <ul class="roadmap-timeline" id="analysis-roadmap"></ul>
+                    </section>
+                    
+                    <section class="upload-card">
+                        <h3><i class="fa-solid fa-arrow-trend-up"></i> Resume Improvements</h3>
+                        <p class="card-desc">Actionable advice to make your resume stand out.</p>
+                        <ul class="analysis-list" id="analysis-improvements"></ul>
+                        
+                        <h3 style="margin-top: 25px;"><i class="fa-solid fa-book"></i> Recommended Courses</h3>
+                        <ul class="analysis-list" id="analysis-courses"></ul>
+                    </section>
+
+                </div>
+            </div>
+
+    <!-- Script Loading -->
+    <script type="module" src="js/sidebar.js"></script>
+    <script type="module" src="js/upload.js"></script>
+</body>
+</html>

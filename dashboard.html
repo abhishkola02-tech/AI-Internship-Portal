@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortalAI - Student Dashboard</title>
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- Sidebar Injection Point -->
+        <div id="sidebar-container"></div>
+
+        <!-- Main Dashboard Viewport -->
+        <main class="main-content">
+            <!-- Welcome Header -->
+            <header class="dashboard-header">
+                <div>
+                    <h1 class="welcome-text">Hello, <span id="student-name">Student</span>!</h1>
+                    <p class="header-subtitle">Welcome to your PortalAI Internship Dashboard.</p>
+                </div>
+                <div class="date-badge" id="current-date-badge">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span id="header-date">July 29, 2026</span>
+                </div>
+            </header>
+
+            <!-- Overview Metrics Grid -->
+            <section class="metrics-grid">
+                <!-- Card 1: Profile -->
+                <div class="metric-card" onclick="window.location.href='profile.html'">
+                    <div class="metric-header">
+                        <span class="metric-title">Profile Completeness</span>
+                        <div class="metric-icon-wrapper purple">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+                    </div>
+                    <div class="metric-body">
+                        <div class="metric-value-row">
+                            <span class="metric-value" id="profile-percent">0%</span>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" id="profile-progress-fill" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                        <span class="metric-note" id="profile-status-desc">Click to complete details</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Resume -->
+                <div class="metric-card" onclick="window.location.href='upload-resume.html'">
+                    <div class="metric-header">
+                        <span class="metric-title">Resume Upload</span>
+                        <div class="metric-icon-wrapper blue">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                    </div>
+                    <div class="metric-body">
+                        <span class="status-badge red" id="resume-status-badge">Missing</span>
+                        <span class="metric-note" id="resume-filename-desc">No resume file uploaded yet</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Skills Extracted -->
+                <div class="metric-card" onclick="window.location.href='recommendation.html'">
+                    <div class="metric-header">
+                        <span class="metric-title">Extracted Skills</span>
+                        <div class="metric-icon-wrapper green">
+                            <i class="fa-solid fa-tags"></i>
+                        </div>
+                    </div>
+                    <div class="metric-body">
+                        <span class="metric-value" id="extracted-skills-count">0</span>
+                        <span class="metric-note">Skills available for match</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Match Recommendations -->
+                <div class="metric-card" onclick="window.location.href='recommendation.html'">
+                    <div class="metric-header">
+                        <span class="metric-title">AI Match Score</span>
+                        <div class="metric-icon-wrapper amber">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                    </div>
+                    <div class="metric-body">
+                        <span class="metric-value" id="average-match-score">--</span>
+                        <span class="metric-note" id="match-score-badge">Add skills to run AI match</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Body Columns -->
+            <div class="dashboard-body-row">
+                <!-- Applications List -->
+                <section class="dashboard-section applications-panel">
+                    <div class="section-header">
+                        <h2>Recent Applications</h2>
+                        <a href="internships.html" class="section-link">Find more internships</a>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="applications-table">
+                            <thead>
+                                <tr>
+                                    <th>Company</th>
+                                    <th>Internship Title</th>
+                                    <th>Applied Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="applications-list-body">
+                                <!-- Dynamic Application items or empty state -->
+                                <tr>
+                                    <td colspan="4" class="table-empty">
+                                        <i class="fa-regular fa-folder-open empty-icon"></i>
+                                        <p>You haven't applied to any internships yet.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Quick Actions / Seed Data Widget -->
+                <aside class="quick-links-panel">
+                    <h2>Quick Settings</h2>
+                    <div class="action-list">
+                        <button class="action-btn-item" onclick="window.location.href='profile.html'">
+                            <i class="fa-solid fa-circle-user icon"></i>
+                            <div class="btn-text">
+                                <span class="title">Complete Profile</span>
+                                <span class="subtitle">Update branch, CGPA, and social URLs</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right arrow"></i>
+                        </button>
+
+                        <button class="action-btn-item" onclick="window.location.href='upload-resume.html'">
+                            <i class="fa-solid fa-cloud-arrow-up icon"></i>
+                            <div class="btn-text">
+                                <span class="title">Upload CV / Resume</span>
+                                <span class="subtitle">PDF and Word documents supported</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right arrow"></i>
+                        </button>
+
+                        <button class="action-btn-item" onclick="window.location.href='recommendation.html'">
+                            <i class="fa-solid fa-wand-magic-sparkles icon"></i>
+                            <div class="btn-text">
+                                <span class="title">AI Skill Extraction</span>
+                                <span class="subtitle">Check matched internship scores</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right arrow"></i>
+                        </button>
+                    </div>
+
+                    <!-- App Connection Check Banner -->
+                    <div class="connection-status-widget" id="sandbox-warning">
+                        <div class="header">
+                            <i class="fa-solid fa-circle-nodes"></i>
+                            <span>Mock Storage Mode</span>
+                        </div>
+                        <p>No Firebase configuration provided in `firebase.js`. Saving and fetching data using browser LocalStorage.</p>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script Loading -->
+    <script type="module" src="js/sidebar.js"></script>
+    <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortalAI - Submit Application</title>
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/apply.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- Sidebar Mounting -->
+        <div id="sidebar-container"></div>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            <!-- Nav header -->
+            <header class="apply-navigation">
+                <a href="internships.html" class="btn-back" id="back-link">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Finder
+                </a>
+            </header>
+
+            <!-- Status banner alerts -->
+            <div id="alert-box" class="alert-box hidden">
+                <i class="alert-icon fa-solid"></i>
+                <span id="alert-message"></span>
+            </div>
+
+            <!-- Page Container layout -->
+            <div class="apply-container-wrapper" id="apply-page-container">
+                
+                <!-- Main application card -->
+                <section class="apply-card" id="apply-card-form">
+                    <div class="card-header">
+                        <h1>Submit Application</h1>
+                        <p class="subtitle">Please confirm your profile credentials before sending to company recruiters.</p>
+                    </div>
+
+                    <!-- Job Summary Box -->
+                    <div class="job-summary-box" id="job-summary-box">
+                        <div class="loading-state">
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+                            <span>Fetching position details...</span>
+                        </div>
+                    </div>
+
+                    <!-- Form wrapper -->
+                    <form id="application-form" onsubmit="return false;">
+                        
+                        <!-- Block 1: Applicant Details -->
+                        <div class="form-section">
+                            <h3><i class="fa-solid fa-circle-info"></i> Applicant Coordinates</h3>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="label">Full Name</span>
+                                    <span class="value" id="applicant-name">--</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="label">Email Address</span>
+                                    <span class="value" id="applicant-email">--</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="label">Phone Number</span>
+                                    <span class="value" id="applicant-phone">--</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 2: Attached Resume Status Check -->
+                        <div class="form-section">
+                            <h3><i class="fa-solid fa-file-pdf"></i> Attached Document</h3>
+                            <div class="resume-verify-status" id="resume-verify-status">
+                                <!-- Dynamic check status -->
+                                <div class="verify-badge loading">
+                                    <i class="fa-solid fa-spinner fa-spin"></i>
+                                    <span>Verifying document attachment...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 3: Cover letter snippet -->
+                        <div class="form-section">
+                            <h3><i class="fa-solid fa-pen-clip"></i> Supporting Statement</h3>
+                            <div class="form-group">
+                                <label for="cover-letter">Cover Letter Snippet / Pitch (Optional)</label>
+                                <textarea id="cover-letter" rows="5" placeholder="Write a short statement introducing yourself and describing why your skill set fits this internship role..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit-app" id="btn-submit-application" disabled>
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span>Submit My Application</span>
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Visual Application Success Screen (Hidden by default) -->
+                <section class="success-screen-card hidden" id="success-screen-card">
+                    <div class="success-icon-wrapper">
+                        <i class="fa-solid fa-circle-check animate-scale"></i>
+                    </div>
+                    <h2>Application Submitted Successfully!</h2>
+                    <p class="success-desc"> recruiters will review your extracted skills profiles and resume download package. You can track progress in your Dashboard.</p>
+                    
+                    <div class="success-job-badge" id="success-job-details">
+                        <!-- Filled by JS -->
+                    </div>
+
+                    <div class="success-actions">
+                        <a href="dashboard.html" class="btn-success-action dashboard">
+                            <i class="fa-solid fa-chart-simple"></i>
+                            <span>Go to Dashboard</span>
+                        </a>
+                        <a href="internships.html" class="btn-success-action explore">
+                            <i class="fa-solid fa-briefcase"></i>
+                            <span>Explore More Internships</span>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Script Loading -->
+    <script type="module" src="js/sidebar.js"></script>
+    <script type="module" src="js/apply.js"></script>
+</body>
+</html>

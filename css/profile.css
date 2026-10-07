@@ -1,0 +1,288 @@
+/* css/profile.css */
+/* Stylesheet for Student Profile Editor */
+
+:root {
+    --bg-dark: #0f0f10;
+    --card-bg: #18181b;
+    --card-border: #27272a;
+    --text-primary: #f4f4f5;
+    --text-secondary: #a1a1aa;
+    --primary-color: #a855f7;
+    --primary-gradient: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+    --accent-glow: rgba(168, 85, 247, 0.15);
+    --font-sans: 'Inter', sans-serif;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+}
+
+.profile-header {
+    margin-bottom: 30px;
+}
+
+.profile-header h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header-subtitle {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+/* Card layout */
+.profile-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
+    animation: fadeIn 0.4s ease;
+}
+
+/* Sections split */
+.form-section {
+    border-bottom: 1px solid #27272a;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.form-section h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-section h3 i {
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+/* Responsive form grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="url"],
+select {
+    width: 100%;
+    padding: 12px;
+    background-color: #0c0c0e;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23a1a1aa'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.form-help {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+/* Tag Inputs UI styling */
+.tag-input-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 12px;
+    background-color: #0c0c0e;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    min-height: 48px;
+    transition: all 0.2s ease;
+}
+
+.tag-input-container:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.tag-input-container input {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 6px 0 !important;
+    flex: 1;
+    min-width: 120px;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    outline: none;
+}
+
+.tag-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #27272a;
+    border: 1px solid #3f3f46;
+    color: var(--text-primary);
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.tag-chip:hover {
+    background-color: #3f3f46;
+}
+
+.tag-delete {
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--text-secondary);
+    transition: color 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tag-delete:hover {
+    color: var(--error-color);
+}
+
+/* Form Submit Actions */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.btn-save {
+    padding: 14px 28px;
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+.btn-save:hover {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+    filter: brightness(1.1);
+}
+
+.btn-save:active {
+    transform: scale(0.98);
+}
+
+.btn-save:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Alert Boxes banner */
+.alert-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    animation: fadeIn 0.3s ease;
+    line-height: 1.4;
+}
+
+.alert-box.hidden {
+    display: none !important;
+}
+
+.alert-box.success {
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    color: var(--success-color);
+}
+
+.alert-box.error {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: var(--error-color);
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .profile-card {
+        padding: 20px;
+    }
+    
+    .form-actions {
+        justify-content: stretch;
+    }
+    
+    .btn-save {
+        width: 100%;
+        justify-content: center;
+    }
+}

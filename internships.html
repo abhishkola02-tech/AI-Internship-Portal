@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortalAI - Search Internships</title>
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/internships.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- Sidebar Mounting Point -->
+        <div id="sidebar-container"></div>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            <!-- Page Header Title -->
+            <header class="internships-header">
+                <div>
+                    <h1>Internships Finder</h1>
+                    <p class="header-subtitle">Explore live remote tech internships, view AI matches, and track bookmarks.</p>
+                </div>
+            </header>
+
+            <!-- Search Filter Bar Grid -->
+            <section class="search-section">
+                <div class="search-bar-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search by title, company, location, or skills (e.g. Python)...">
+                </div>
+            </section>
+
+            <!-- Navigation Tabs for views -->
+            <div class="tabs-container">
+                <div class="tabs-list">
+                    <button class="tab-btn active" id="tab-all" data-tab="all">
+                        <i class="fa-solid fa-list"></i> All Internships
+                    </button>
+                    <button class="tab-btn" id="tab-ai" data-tab="ai">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> AI Recommendations
+                    </button>
+                    <button class="tab-btn" id="tab-saved" data-tab="saved">
+                        <i class="fa-solid fa-bookmark"></i> Saved Internships
+                    </button>
+                </div>
+            </div>
+
+            <!-- Status Alert Banner -->
+            <div id="alert-box" class="alert-box hidden">
+                <i class="alert-icon fa-solid"></i>
+                <span id="alert-message"></span>
+            </div>
+
+            <!-- Internship Cards Grid Container -->
+            <section class="internships-list-grid" id="internships-list-grid">
+                <!-- Loaded items will go here dynamically -->
+                <div class="loading-state">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span>Fetching live internships database...</span>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Script Loading -->
+    <script type="module" src="js/sidebar.js"></script>
+    <script type="module" src="js/internships.js"></script>
+</body>
+</html>

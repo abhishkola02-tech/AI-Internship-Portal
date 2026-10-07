@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortalAI - Complete Profile</title>
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- Sidebar Mounting Point -->
+        <div id="sidebar-container"></div>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            <!-- Page Title Header -->
+            <header class="profile-header">
+                <div>
+                    <h1>Complete Profile</h1>
+                    <p class="header-subtitle">Update your profile parameters so our AI engine can match you accurately.</p>
+                </div>
+            </header>
+
+            <!-- Status Alerts Banner -->
+            <div id="alert-box" class="alert-box hidden">
+                <i class="alert-icon fa-solid"></i>
+                <span id="alert-message"></span>
+            </div>
+
+            <!-- Profile Form Card -->
+            <section class="profile-card">
+                <form id="profile-form" onsubmit="return false;">
+                    
+                    <!-- Section: Personal Info -->
+                    <div class="form-section">
+                        <h3><i class="fa-solid fa-address-card"></i> Personal Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="profile-name">Full Name *</label>
+                                <input type="text" id="profile-name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-email">Email Address (Read-only)</label>
+                                <input type="email" id="profile-email" readonly style="opacity: 0.65; cursor: not-allowed;">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-phone">Phone Number *</label>
+                                <input type="tel" id="profile-phone" placeholder="+1 (555) 000-0000" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Education -->
+                    <div class="form-section">
+                        <h3><i class="fa-solid fa-graduation-cap"></i> Academic Details</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="profile-branch">Academic Branch / Major</label>
+                                <select id="profile-branch">
+                                    <option value="" disabled selected>Select your branch</option>
+                                    <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+                                    <option value="Information Technology">Information Technology</option>
+                                    <option value="Electronics & Communication">Electronics & Communication</option>
+                                    <option value="Electrical Engineering">Electrical Engineering</option>
+                                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                    <option value="Civil Engineering">Civil Engineering</option>
+                                    <option value="Data Science & AI">Data Science & AI</option>
+                                    <option value="Other">Other Major</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-cgpa">Cumulative GPA (CGPA / 10.0 scale) *</label>
+                                <input type="number" id="profile-cgpa" step="0.01" min="0" max="10" placeholder="e.g. 8.75" required>
+                                <small class="form-help">Enter a value between 0.00 and 10.00</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Skills & Tags (Interactive Custom UI) -->
+                    <div class="form-section">
+                        <h3><i class="fa-solid fa-cubes"></i> Skills & Interests</h3>
+                        <div class="form-group">
+                            <label>Professional Skills *</label>
+                            <div class="tag-input-container" id="skills-tag-container">
+                                <!-- Dynamic Tag Chips will go here -->
+                                <input type="text" id="skills-input" placeholder="Type a skill and press Enter">
+                            </div>
+                            <small class="form-help">Write skills like Python, CSS, ML, Java. Press Enter or comma after each.</small>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="profile-interests">Areas of Interest</label>
+                                <input type="text" id="profile-interests" placeholder="e.g. Deep Learning, Web Apps, Cyber Security">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-certifications">Certifications</label>
+                                <input type="text" id="profile-certifications" placeholder="e.g. AWS Developer, TensorFlow Certificate">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Social Portals -->
+                    <div class="form-section">
+                        <h3><i class="fa-solid fa-share-nodes"></i> Portfolios & Profiles</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="profile-linkedin"><i class="fa-brands fa-linkedin"></i> LinkedIn URL</label>
+                                <input type="url" id="profile-linkedin" placeholder="https://linkedin.com/in/username">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-github"><i class="fa-brands fa-github"></i> GitHub Profile URL</label>
+                                <input type="url" id="profile-github" placeholder="https://github.com/username">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Resume Document (PDF) -->
+                    <div class="form-section">
+                        <h3><i class="fa-solid fa-file-pdf"></i> Resume Document (PDF)</h3>
+                        <div id="profile-resume-display" style="background: rgba(255, 255, 255, 0.03); border: 1px dashed var(--border-color); border-radius: 12px; padding: 20px; text-align: center;">
+                            <i class="fa-regular fa-folder-open" style="font-size: 28px; color: var(--text-secondary); margin-bottom: 8px;"></i>
+                            <p style="color: var(--text-secondary); margin-bottom: 12px;">No active PDF resume stored.</p>
+                            <a href="upload-resume.html" class="btn-save" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 8px 16px; font-size: 14px;">
+                                <i class="fa-solid fa-cloud-arrow-up"></i> Upload PDF Resume
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Submit Actions -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn-save" id="btn-save-profile">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                            <span>Save Profile Changes</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Script Loading -->
+    <script type="module" src="js/sidebar.js"></script>
+    <script type="module" src="js/profile.js"></script>
+</body>
+</html>

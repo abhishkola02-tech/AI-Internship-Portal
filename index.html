@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortalAI - Secure Login</title>
+    <meta name="description" content="Login to PortalAI - AI-powered internship recommendation portal for students">
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="css/login.css">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="auth-background-radial"></div>
+
+    <div class="container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="brand">
+                    <i class="fa-solid fa-graduation-cap brand-icon"></i>
+                    <span>PortalAI</span>
+                </div>
+                <h1>Welcome Back</h1>
+                <p class="subtitle">Log in to check recommendations and apply for internships</p>
+            </div>
+
+            <!-- Error/Success Message Alert Banner -->
+            <div id="alert-box" class="alert-box hidden">
+                <i class="alert-icon fa-solid"></i>
+                <span id="alert-message"></span>
+            </div>
+
+            <form id="login-form" onsubmit="return false;">
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="input-icon fa-solid fa-envelope"></i>
+                        <input type="email" id="email" placeholder="name@college.edu" required autocomplete="email">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <i class="input-icon fa-solid fa-lock"></i>
+                        <input type="password" id="password" placeholder="Enter password" required autocomplete="current-password">
+                        <button type="button" class="password-toggle-btn" id="password-toggle" tabindex="-1">
+                            <i class="fa-regular fa-eye-slash" id="toggle-icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit" id="btn-login">
+                    <span>Log In</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="auth-divider">
+                <span>or</span>
+            </div>
+
+            <!-- Google Sign-In Button -->
+            <button type="button" class="btn-google" id="btn-google">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" class="google-icon">
+                <span>Continue with Google</span>
+            </button>
+
+            <div class="auth-footer">
+                <p>Don't have an account? <a href="register.html" class="auth-link">Create Account</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ES Module Script Loading for Firebase Support -->
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>

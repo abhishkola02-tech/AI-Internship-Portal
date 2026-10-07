@@ -1,0 +1,416 @@
+/* css/apply.css */
+/* Stylesheet for Application Submission */
+
+:root {
+    --bg-dark: #0f0f10;
+    --card-bg: #18181b;
+    --card-border: #27272a;
+    --text-primary: #f4f4f5;
+    --text-secondary: #a1a1aa;
+    --primary-color: #a855f7;
+    --secondary-color: #3b82f6;
+    --primary-gradient: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+    --font-sans: 'Inter', sans-serif;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+}
+
+/* Nav back */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+    color: var(--text-primary);
+    transform: translateX(-4px);
+}
+
+/* Card wraps */
+.apply-container-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.apply-card,
+.success-screen-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 36px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.4s ease;
+}
+
+.apply-card h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.card-header {
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 16px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* Job Preview Summary widget */
+.job-summary-box {
+    background-color: #0c0c0e;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.job-sum-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.job-sum-meta {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.job-sum-salary {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* Form sections */
+.form-section {
+    margin-bottom: 26px;
+}
+
+.form-section h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-section h3 i {
+    color: var(--primary-color);
+}
+
+/* Grid display data values */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    background-color: #0c0c0e;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-item .label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.info-item .value {
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-top: 4px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* Resume verification */
+.resume-verify-status {
+    background-color: #0c0c0e;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.verify-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.verify-badge.loading {
+    color: var(--text-secondary);
+}
+
+.verify-badge.success {
+    color: var(--success-color);
+}
+
+.verify-badge.error {
+    color: var(--error-color);
+}
+
+.verify-badge i {
+    font-size: 18px;
+}
+
+.btn-upload-redirect {
+    margin-left: auto;
+    padding: 6px 12px;
+    background-color: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-upload-redirect:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Textarea input */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: #0c0c0e;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    outline: none;
+    resize: vertical;
+    transition: all 0.2s ease;
+}
+
+textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+}
+
+/* Submit application trigger */
+.btn-submit-app {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+.btn-submit-app:hover {
+    box-shadow: 0 0 16px rgba(168, 85, 247, 0.4);
+    filter: brightness(1.1);
+}
+
+.btn-submit-app:active {
+    transform: scale(0.98);
+}
+
+.btn-submit-app:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    filter: grayscale(0.5);
+}
+
+/* Success screen panel styling */
+.success-screen-card {
+    text-align: center;
+}
+
+.success-screen-card.hidden {
+    display: none !important;
+}
+
+.success-icon-wrapper {
+    margin-bottom: 24px;
+}
+
+.success-icon-wrapper i {
+    font-size: 70px;
+    color: var(--success-color);
+    filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.3));
+}
+
+.success-screen-card h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.success-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.success-job-badge {
+    margin: 24px auto;
+    background-color: #0c0c0e;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    max-width: 500px;
+    text-align: left;
+}
+
+.success-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 30px;
+}
+
+.btn-success-action {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-success-action.dashboard {
+    background-color: #27272a;
+    border: 1px solid #3f3f46;
+    color: var(--text-primary);
+}
+
+.btn-success-action.dashboard:hover {
+    background-color: #3f3f46;
+}
+
+.btn-success-action.explore {
+    background: var(--primary-gradient);
+    border: none;
+    color: white;
+}
+
+.btn-success-action.explore:hover {
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+    filter: brightness(1.1);
+}
+
+/* Alert layouts */
+.alert-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    animation: fadeIn 0.3s ease;
+    line-height: 1.4;
+}
+
+.alert-box.hidden {
+    display: none !important;
+}
+
+.alert-box.success {
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    color: var(--success-color);
+}
+
+.alert-box.error {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: var(--error-color);
+}
+
+/* Animations */
+.animate-scale {
+    animation: scalePulse 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes scalePulse {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 576px) {
+    .success-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .btn-success-action {
+        width: 100%;
+        justify-content: center;
+    }
+}

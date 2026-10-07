@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Internship Recommendation Portal</title>
+
+<link rel="stylesheet" href="css/chat.css">
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+    <h2>AI Portal</h2>
+
+    <button onclick="newChat()">+ New Chat</button>
+
+    <button onclick="logout()">Logout</button>
+
+</div>
+
+<!-- Main Chat Area -->
+
+<div class="main">
+
+    <div class="header">
+        <div class="header-info">
+            <h2>AI Internship Recommendation Portal</h2>
+            <p id="welcome"></p>
+        </div>
+
+        <button class="dashboard-btn" id="profileAvatar" onclick="toggleMenu()">
+            k
+        </button>
+
+        <div id="dashboardMenu" class="dashboard-menu">
+            <a href="profile.html">Complete Your Profile</a>
+            <a href="upload.html">Upload Resume</a>
+        </div>
+    </div>
+
+    <div class="chat-box" id="chatBox">
+
+        <div class="bot-message">
+            👋 Hello! Welcome to the AI Internship Recommendation Portal.<br><br>
+
+            Ask me about:
+            <br><br>
+
+            ✔ Internship Recommendations<br>
+            ✔ Resume Review<br>
+            ✔ Career Guidance<br>
+            ✔ Skill Suggestions
+        </div>
+
+    </div>
+
+    <div class="input-area">
+
+        <input
+        type="text"
+        id="message"
+        placeholder="Type your message...">
+
+        <button onclick="sendMessage()">
+            Send
+        </button>
+
+    </div>
+
+</div>
+
+<script type="module" src="js/chat.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login & Registration</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#4a90e2;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:#fff;
+    width:350px;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.3);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#4a90e2;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#357ABD;
+}
+
+.link{
+    text-align:center;
+    margin-top:15px;
+}
+
+.link a{
+    color:blue;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#registerForm{
+    display:none;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Login Form -->
+    <div id="loginForm">
+        <h2>Login</h2>
+
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+
+        <button>Login</button>
+
+        <div class="link">
+            Don't have an account?
+            <a onclick="showRegister()">Register</a>
+        </div>
+    </div>
+
+    <!-- Registration Form -->
+    <div id="registerForm">
+        <h2>Register</h2>
+
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Phone Number" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm Password" required>
+
+        <button>Register</button>
+
+
+</div>
+
+<script>
+function showRegister(){
+    document.getElementById("loginForm").style.display="none";
+    document.getElementById("registerForm").style.display="block";
+}
+
+function showLogin(){
+    document.getElementById("registerForm").style.display="none";
+    document.getElementById("loginForm").style.display="block";
+}
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Internship Recommendation Portal</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+display:flex;
+height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:250px;
+background:#202123;
+color:white;
+padding:20px;
+}
+
+.sidebar h2{
+margin-bottom:30px;
+}
+
+.sidebar button{
+width:100%;
+padding:12px;
+background:#444654;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* Main */
+
+.main{
+flex:1;
+display:flex;
+flex-direction:column;
+background:#343541;
+}
+
+.header{
+padding:15px;
+background:#202123;
+color:white;
+text-align:center;
+font-size:22px;
+}
+
+.chat-box{
+flex:1;
+padding:20px;
+overflow-y:auto;
+color:white;
+}
+
+.user{
+background:#444654;
+padding:10px;
+margin:10px;
+border-radius:8px;
+}
+
+.bot{
+background:#2d2d2d;
+padding:10px;
+margin:10px;
+border-radius:8px;
+}
+
+.input-area{
+display:flex;
+padding:15px;
+background:#40414f;
+}
+
+.input-area input{
+flex:1;
+padding:12px;
+border:none;
+border-radius:5px;
+}
+
+.input-area button{
+margin-left:10px;
+padding:12px 20px;
+background:#19c37d;
+border:none;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>

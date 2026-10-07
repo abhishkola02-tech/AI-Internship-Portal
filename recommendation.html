@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortalAI - AI Recommendation System</title>
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/recommendation.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- Sidebar Mounting -->
+        <div id="sidebar-container"></div>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            <!-- Header Title -->
+            <header class="recommendation-header">
+                <div>
+                    <h1>AI Recommendation System</h1>
+                    <p class="header-subtitle">Analyze your resume using NLP to extract skills and match them with internships.</p>
+                </div>
+            </header>
+
+            <!-- Status Alert banner -->
+            <div id="alert-box" class="alert-box hidden">
+                <i class="alert-icon fa-solid"></i>
+                <span id="alert-message"></span>
+            </div>
+
+            <!-- Page Layout Columns -->
+            <div class="recommendation-grid">
+                
+                <!-- Left: AI Resume Insights & Profile Skills -->
+                <section class="extraction-card">
+                    <div class="section-title-row">
+                        <h3><i class="fa-solid fa-brain"></i> AI Resume Insights</h3>
+                    </div>
+                    <p class="card-desc">These are the technical skills and recommendations extracted from your uploaded resume by the OpenAI GPT Engine.</p>
+
+                    <div class="skills-display-panel" id="skills-display-panel" style="margin-top: 20px;">
+                        <h4>Extracted Technical Skills</h4>
+                        <div class="skills-chips-wrapper" id="profile-skills-list">
+                            <!-- Render current skills -->
+                            <div class="loading-results" style="padding: 10px 0;">
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+
+                        <h4 style="margin-top: 25px;">Identified Missing Skills</h4>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 10px;">Skills you should consider learning to improve your match rate.</p>
+                        <div class="skills-chips-wrapper" id="missing-skills-list">
+                            <!-- Render missing skills -->
+                            <span class="no-skills-msg">Upload a resume to see missing skill recommendations.</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(108, 92, 231, 0.05); border: 1px solid rgba(108, 92, 231, 0.2); border-radius: 8px;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 10px; font-size: 15px;"><i class="fa-solid fa-lightbulb"></i> How Matching Works</h4>
+                        <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                            The AI Recommendation Engine compares your extracted technical skills against the required skills of active internship postings. The Match Score represents the percentage of required skills you possess.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Right: Matched Recommendations list -->
+                <section class="recommendations-results-panel">
+                    <div class="results-header">
+                        <h3><i class="fa-solid fa-list-check"></i> Matched Internships</h3>
+                        <span class="badge" id="matched-count-badge">0 Matches</span>
+                    </div>
+                    <p class="card-desc">These remote internships match your technical competencies. Recommended scores are calculated dynamically.</p>
+
+                    <!-- Match listing wrapper -->
+                    <div class="recommendations-list" id="recommendations-list">
+                        <!-- Dynamic Recommended cards populate here -->
+                        <div class="loading-results">
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+                            <span>Analyzing skills database...</span>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Script Loading -->
+    <script type="module" src="js/sidebar.js"></script>
+    <script type="module" src="js/recommendation.js"></script>
+</body>
+</html>

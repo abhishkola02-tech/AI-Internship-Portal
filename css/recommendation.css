@@ -1,0 +1,462 @@
+/* css/recommendation.css */
+/* Stylesheet for AI Recommendations Dashboard */
+
+:root {
+    --bg-dark: #0f0f10;
+    --card-bg: #18181b;
+    --card-border: #27272a;
+    --text-primary: #f4f4f5;
+    --text-secondary: #a1a1aa;
+    --primary-color: #a855f7;
+    --secondary-color: #3b82f6;
+    --primary-gradient: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+    --accent-glow: rgba(168, 85, 247, 0.15);
+    --font-sans: 'Inter', sans-serif;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+}
+
+.recommendation-header {
+    margin-bottom: 30px;
+}
+
+.recommendation-header h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header-subtitle {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+/* Page Layout grid */
+.recommendation-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1.9fr;
+    gap: 24px;
+    align-items: start;
+    animation: fadeIn 0.4s ease;
+}
+
+.extraction-card,
+.recommendations-results-panel {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.extraction-card h3,
+.recommendations-results-panel h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.results-header .badge {
+    background-color: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.card-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Extraction Button */
+.btn-extract {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+.btn-extract:hover {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+    filter: brightness(1.1);
+}
+
+.btn-extract:active {
+    transform: scale(0.98);
+}
+
+.btn-extract:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Simulated terminal console */
+.terminal-console {
+    background-color: #09090b;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    margin-top: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.terminal-header {
+    background-color: #121214;
+    border-bottom: 1px solid var(--card-border);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.terminal-header .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.terminal-header .dot.red { background-color: #ef4444; }
+.terminal-header .dot.yellow { background-color: #f59e0b; }
+.terminal-header .dot.green { background-color: #10b981; }
+
+.terminal-title {
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-left: 6px;
+}
+
+.terminal-body {
+    padding: 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    height: 180px;
+    overflow-y: auto;
+    color: #e4e4e7;
+    text-align: left;
+}
+
+.terminal-line {
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+}
+
+.terminal-line.info {
+    color: #38bdf8;
+}
+
+.terminal-line.success {
+    color: #4ade80;
+}
+
+.terminal-line.warning {
+    color: #fbbf24;
+}
+
+/* Skills display area */
+.skills-display-panel {
+    margin-top: 24px;
+    border-top: 1px solid var(--card-border);
+    padding-top: 20px;
+}
+
+.skills-display-panel h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.skills-chips-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skills-chips-wrapper .tag-chip {
+    background-color: #27272a;
+    border: 1px solid #3f3f46;
+    color: var(--text-primary);
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.no-skills-msg {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Recommendations list matching cards */
+.recommendations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 200px;
+}
+
+.recommendation-card {
+    background-color: #0c0c0e;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.recommendation-card:hover {
+    transform: translateY(-2px);
+    border-color: #3f3f46;
+}
+
+.rec-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.rec-job-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.rec-company-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.rec-company-row span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.match-score-radial {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+.match-percentage {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.match-percentage.high { color: var(--success-color); }
+.match-percentage.medium { color: var(--secondary-color); }
+.match-percentage.low { color: var(--text-secondary); }
+
+.match-label-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+}
+
+.match-label-badge.high {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.match-label-badge.medium {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--secondary-color);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.match-label-badge.low {
+    background-color: rgba(161, 161, 170, 0.1);
+    color: var(--text-secondary);
+    border: 1px solid rgba(161, 161, 170, 0.2);
+}
+
+/* Matched/Missing Skills Details inside card */
+.skills-comparison-block {
+    background-color: #121214;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.comparison-row {
+    font-size: 12px;
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.comparison-row strong {
+    min-width: 90px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.comparison-row span {
+    color: var(--text-primary);
+}
+
+.comparison-row .matched-skills-text {
+    color: #a7f3d0;
+}
+
+.comparison-row .missing-skills-text {
+    color: #fda4af;
+}
+
+/* Card Button Actions */
+.rec-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn-card-action {
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-card-action.details {
+    background-color: #27272a;
+    border: 1px solid #3f3f46;
+    color: var(--text-primary);
+}
+
+.btn-card-action.details:hover {
+    background-color: #3f3f46;
+}
+
+.btn-card-action.apply {
+    background: var(--primary-gradient);
+    border: none;
+    color: white;
+}
+
+.btn-card-action.apply:hover {
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+    filter: brightness(1.1);
+}
+
+/* Loading & Empty states styling */
+.loading-results,
+.empty-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.loading-results i {
+    font-size: 32px;
+    color: var(--primary-color);
+}
+
+.empty-results i {
+    font-size: 40px;
+    color: #27272a;
+}
+
+/* Alert styles */
+.alert-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    animation: fadeIn 0.3s ease;
+    line-height: 1.4;
+}
+
+.alert-box.hidden {
+    display: none !important;
+}
+
+.alert-box.success {
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    color: var(--success-color);
+}
+
+.alert-box.error {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: var(--error-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@media (max-width: 992px) {
+    .recommendation-grid {
+        grid-template-columns: 1fr;
+    }
+}

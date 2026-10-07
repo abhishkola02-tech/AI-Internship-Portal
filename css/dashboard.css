@@ -1,0 +1,394 @@
+/* css/dashboard.css */
+/* Stylesheet for the Student Dashboard */
+
+:root {
+    --bg-dark: #0f0f10;
+    --card-bg: #18181b;
+    --card-border: #27272a;
+    --text-primary: #f4f4f5;
+    --text-secondary: #a1a1aa;
+    --primary-color: #a855f7;
+    --success-bg: rgba(16, 185, 129, 0.15);
+    --success-text: #34d399;
+    --warning-bg: rgba(245, 158, 11, 0.15);
+    --warning-text: #fbbf24;
+    --danger-bg: rgba(239, 68, 68, 0.15);
+    --danger-text: #f87171;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 16px;
+}
+
+.welcome-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.welcome-text span {
+    background: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header-subtitle {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+.date-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* Metrics Grid styling */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.metric-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 140px;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    border-color: #3f3f46;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.metric-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.metric-icon-wrapper {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.metric-icon-wrapper.purple {
+    background-color: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+}
+
+.metric-icon-wrapper.blue {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+}
+
+.metric-icon-wrapper.green {
+    background-color: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+}
+
+.metric-icon-wrapper.amber {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #fbbd23;
+}
+
+.metric-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.metric-value {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-primary);
+}
+
+.metric-value-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.progress-bar-container {
+    flex: 1;
+    height: 6px;
+    background-color: #27272a;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #a855f7 0%, #3b82f6 100%);
+    border-radius: 3px;
+    transition: width 0.6s ease;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.status-badge.green {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+}
+
+.status-badge.red {
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
+}
+
+.status-badge.amber {
+    background-color: var(--warning-bg);
+    color: var(--warning-text);
+}
+
+.metric-note {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* Dashboard Body Columns styling */
+.dashboard-body-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+
+.dashboard-section {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.section-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.section-link:hover {
+    opacity: 0.8;
+}
+
+/* Applications Table styling */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.applications-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.applications-table th {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--card-border);
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.applications-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--card-border);
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.applications-table tr:last-child td {
+    border-bottom: none;
+}
+
+.table-empty {
+    text-align: center;
+    padding: 40px !important;
+    color: var(--text-secondary);
+}
+
+.empty-icon {
+    font-size: 40px;
+    color: #27272a;
+    margin-bottom: 12px;
+}
+
+/* Right Column Panel (Quick Settings & Database Sandbox Indicator) */
+.quick-links-panel {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.quick-links-panel h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.action-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.action-btn-item {
+    display: flex;
+    align-items: center;
+    background-color: #0c0c0e;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    width: 100%;
+    color: var(--text-primary);
+}
+
+.action-btn-item:hover {
+    border-color: #4b5563;
+    background-color: #121214;
+}
+
+.action-btn-item .icon {
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-right: 14px;
+    width: 24px;
+    text-align: center;
+}
+
+.action-btn-item .btn-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.action-btn-item .title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.action-btn-item .subtitle {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.action-btn-item .arrow {
+    font-size: 12px;
+    color: var(--text-secondary);
+    transition: transform 0.2s;
+}
+
+.action-btn-item:hover .arrow {
+    transform: translateX(4px);
+    color: var(--text-primary);
+}
+
+/* Connection warning widget */
+.connection-status-widget {
+    background-color: rgba(245, 158, 11, 0.05);
+    border: 1px dashed rgba(245, 158, 11, 0.3);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.connection-status-widget .header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--warning-text);
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.connection-status-widget p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .dashboard-body-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .date-badge {
+        margin-top: -10px;
+    }
+}
